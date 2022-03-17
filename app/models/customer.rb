@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+  
   has_many :cart_items
   has_many :items, through: :cart_items
   has_many :orders
@@ -16,5 +16,5 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
   validates :address, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :phone_number, presence: true, format: { with: /\A\d{10}\z/ }
-  
+
 end

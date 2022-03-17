@@ -1,4 +1,5 @@
 class Customer::CustomersController < ApplicationController
+
   def show
   end
 
@@ -7,4 +8,5 @@ class Customer::CustomersController < ApplicationController
 
   def quit_confirm
   end
+
 end
