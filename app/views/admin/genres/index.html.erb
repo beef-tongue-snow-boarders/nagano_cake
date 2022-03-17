@@ -2,15 +2,8 @@
   <h3 class="mb-5">ジャンル一覧・追加</h3>
   <div class='row mb-5'>
     <div class="col-sm-12 col-md-10 col-lg-7 px-8 px-sm-0">
-      <% if @genre.errors.any? %>
-        <%= @genre.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @genre.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
+      <%= render 'layouts/errors', obj: @genre %>
+      
       <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
         <div class="form-group">
           <%= f.label :name, "ジャンル名", class: "col-sm-3" %>
