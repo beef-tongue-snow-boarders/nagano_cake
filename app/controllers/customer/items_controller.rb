@@ -8,6 +8,7 @@ class Customer::ItemsController < ApplicationController
     @cart_item = CartItem
   end
 
+
   private
 
   def item_params
