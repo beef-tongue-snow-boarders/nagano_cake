@@ -11,7 +11,7 @@
         </ul>
       <% end %>
 
-      <%= form_with model: @item, url: admin_items_path, method: :post, local: true do |f| %>
+      <%= form_with model: @item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
         <div class="form-group row">
           <%= f.label :image, "商品画像", class: "col-sm-3" %>
           <%= f.file_field :image, accept: "image/*" %>
@@ -24,7 +24,7 @@
 
         <div class="form-group row">
           <%= f.label :introduction, "商品説明", class: "col-sm-3" %>
-          <%= f.text_area :introduction, placeholder:"ここに説明文を記述します", class: "form-control col-sm-7" %>
+          <%= f.text_area :introduction, placeholder:"ここに説明文を記述します", class: "form-control col-sm-7", rows: "7" %>
         </div>
 
         <div class="form-group row">

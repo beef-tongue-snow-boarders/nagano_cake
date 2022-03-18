@@ -20,7 +20,7 @@ class Customer::CustomersController < ApplicationController
   def quit_confirm
     @customer = current_customer
   end
-  
+
   def quit
     @customer = current_customer
     @customer.update(is_deleted: true)
