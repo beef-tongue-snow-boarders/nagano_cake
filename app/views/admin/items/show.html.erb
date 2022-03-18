@@ -1,2 +1,38 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class='container mx-auto mt-5'>
+  <h3 class="mb-5">商品詳細</h3>
+  <div class='row mx-auto'>
+    <div class="col-sm-5 col-md-5 col-lg-5">
+      <!--後で商品画像挿入-->
+    </div>
+    <div class="col-sm-7 col-md-7 col-lg-7">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="font-weight-bold">商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">ジャンル</td>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">税込価格(税抜価格)</td>
+            <td>後で価格記述</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">販売ステータス</td>
+            <% if @item.is_active == true %>
+              <td class="text-success font-weight-bold">販売中</td>
+            <% else %>
+              <td class="text-secondary font-weight-bold">販売停止中</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
