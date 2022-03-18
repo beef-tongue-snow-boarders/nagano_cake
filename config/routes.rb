@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     post 'orders/order_confirm'
     get 'orders/complete'
-    delete 'cart_items/destroy_all'
+    delete 'cart_items/all_destroy'
     get 'customers/quit_confirm'
     patch 'customers/quit'
     resources :orders, only:[:new, :show, :index, :create]
