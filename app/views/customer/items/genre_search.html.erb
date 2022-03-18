@@ -1,21 +1,19 @@
 <div class="container mt-5">
   <div class="row">
-
     <div class="col-md-3">
      <%= render 'genre-search', genres: @genres %>
     </div>
-
     <div class="col-md-8 offset-md-1 mx-auto">
      <h4 class="my-4">
-      <% if params[:id] %>
-       <%= @genre.name %>一覧
-      <% else %>
-       商品一覧
-      <% end %>
+       <% if params[:id] %>
+        <%= @genre.name %>一覧
+       <% else %> 商品一覧
+       <% end %>
+
+       <!--<span class="small text-muted"> 全 <%= @items.count %> 件</span>-->
      </h4>
 
      <div class="d-flex align-items-center justify-content-around flex-wrap mb-5">
-
       <% @items.each do |item| %>
        <div class="my-2 mx-1">
          <%= link_to item_path(item) do %>
@@ -26,7 +24,7 @@
        </div>
       <% end %>
      </div>
-     <%= paginate @items %>
+
     </div>
   </div>
 </div>
