@@ -20,15 +20,15 @@ Rails.application.routes.draw do
   scope module: :customer do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :orders, only:[:new, :show, :index, :create]
     post 'orders/order_confirm'
     get 'orders/complete'
-    resources :cart_items, only:[:index, :create, :update, :destroy]
     delete 'cart_items/destroy_all'
+    get 'customers/quit_confirm'
+    patch 'customers/quit'
+    resources :orders, only:[:new, :show, :index, :create]
+    resources :cart_items, only:[:index, :create, :update, :destroy]
     resources :items, only:[:index, :show]
     resources :customers, only:[:show, :edit, :update]
-    get 'customers/quit_confirm'
-    patch 'customers' => 'customers#quit'
     resources :shipping_addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 end

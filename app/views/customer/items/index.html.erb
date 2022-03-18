@@ -1,2 +1,24 @@
-<h1>Customer::Items#index</h1>
-<p>Find me in app/views/customer/items/index.html.erb</p>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+     <%= render 'genre-search' %>
+    </div>
+    <div class="col-md-8 offset-md-1 mx-auto">
+     <h4 class="my-4">商品一覧</h4>
+
+     <div class="d-flex align-items-center justify-content-around flex-wrap mb-5">
+      <% @items.each do |item| %>
+       <div class="my-2 mx-1">
+         <%= link_to item_path(item) do %>
+          <%= image_tag item.get_image(180,180) %>
+          <p class="pt-2"><%= item.name %></p>
+         <% end %>
+         <span>¥<%= item.price %></span>
+       </div>
+      <% end %>
+     </div>
+     <%= paginate @items, class: 'justify-content-center' %>
+    </div>
+  </div>
+</div>
