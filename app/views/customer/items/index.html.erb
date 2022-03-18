@@ -8,9 +8,9 @@
     <div class="col-md-8 offset-md-1 mx-auto">
      <h4 class="my-4">
       <% if params[:id] %>
-       <%= @genre.name %>一覧
+       <%= @genre.name %><span class="small text-muted"> 全 <%= @items.count %> 件</span>
       <% else %>
-       商品一覧
+       商品一覧<span class="small text-muted"> 全 <%= @items.count %> 件</span>
       <% end %>
      </h4>
 
