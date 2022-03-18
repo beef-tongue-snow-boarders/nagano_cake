@@ -1,2 +1,59 @@
-<h1>Customer::CartItems#index</h1>
-<p>Find me in app/views/customer/cart_items/index.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class=" col-md-8 mx-auto">
+      <% if current_customer.cart_items.present? %>
+
+       <h4>ショッピングカート</h4>
+       <p class="text-right"><%= link_to "カートを空にする", cart_items_all_destroy_path,method: :delete, "data-confirm" => "全て削除しますか？" %></p>
+       <table class="table table-borderless border-top border-bottom">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価</th>
+            <th class="text-center">数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+       <% total = 0 %>
+        <% @cart_items.each do |cart_item| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag cart_item.item.get_image(60,60) %>
+              <%= cart_item.item.name %>
+            </td>
+            <td>¥<%= (cart_item.item.add_tax_price).to_i %></td>
+            <td>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item),method: :patch, local: true do |f| %>
+               <%= f.number_field :amount, min: 1, max: 10, id: "amount_cart" %>
+               <%= f.submit "変更", class: 'btn btn-success btn-sm' %>
+              <% end %>
+            </td>
+            <td>
+               <% subtotal = ((cart_item.item.price*cart_item.amount)*1.10).to_i %>
+              ¥<%= subtotal %>
+            </td>
+            <td>
+              <%= link_to "削除",cart_item_path(cart_item.id,cart_item), method: :delete, "data-confirm" => "削除しますか？" %>
+            </td>
+          </tr>
+           <% total += subtotal %>
+        </tbody>
+       <% end %>
+       </table>
+      <h4 class="text-right mr-2">合計　¥<%= total %></h4>
+      <%= link_to "買い物を続ける",items_path, class: 'btn btn-primary' %>
+      <p class="text-center mt-5"><%=link_to "情報入力画面へ進む", new_order_path, class: 'btn btn-success' %></p>
+
+      <% else %>
+      <div class="text-center">
+        <p class="mb-5">カート内に商品はありません</p>
+        <%= link_to "買い物を続ける",items_path, class: 'btn btn-primary' %>
+      </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

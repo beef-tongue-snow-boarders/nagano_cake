@@ -1,2 +1,24 @@
-<h1>Customer::ShippingAddresses#edit</h1>
-<p>Find me in app/views/customer/shipping_addresses/edit.html.erb</p>
+<div class="container col-8 mx-auto mt-5">
+  <h2 class="mb-5">配送先編集</h2>
+  <div class="row">
+    <div>
+     <%= form_with model:@shipping_address, local:true do |f| %>
+      <table>
+          <tr>
+            <td colspan="2" class="pt-4"><%= f.label :'郵便番号(ハイフンなし)' %></td>
+            <td class="pt-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-3"><%= f.label :住所 %></td>
+            <td colspan="3" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-3"><%= f.label :宛名 %></td>
+            <td colspan="3" class="pt-3"><%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %></td>
+            <td align="center" colspan="3" class="pt-4"><%= f.submit "変更内容を保存", class: 'btn btn-success w-30' %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
