@@ -1,16 +1,8 @@
 <div class='container mx-auto mt-5'>
   <h3 class="mb-5">商品新規登録</h3>
+  <%= render 'layouts/errors', obj: @item %>
   <div class='row'>
     <div class="col-sm-12 col-md-10 col-lg-7 px-5 px-sm-0 mx-auto">
-      <% if @item.errors.any? %>
-        <%= @item.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @item.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
       <%= form_with model: @item, url: admin_items_path, method: :post, local: true do |f| %>
         <div class="form-group row">
           <%= f.label :image, "商品画像", class: "col-sm-3" %>

@@ -1,12 +1,12 @@
 <div class='container mx-auto mt-5'>
   <h3 class="mb-5">ジャンル一覧・追加</h3>
+  
   <div class='row mb-5'>
-    <div class="col-sm-12 col-md-10 col-lg-7 px-8 px-sm-0">
-      <%= render 'layouts/errors', obj: @genre %>
-      
+    <div class="col-12 px-8 px-sm-0">
       <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
+        <%= render 'layouts/errors', obj: @genre %>
         <div class="form-group">
-          <%= f.label :name, "ジャンル名", class: "col-sm-3" %>
+          <%= f.label :name, "ジャンル名", class: "col-sm-1" %>
           <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
 
           <%= f.submit "新規登録",class: "btn btn-success btn-lg" %>
@@ -14,6 +14,7 @@
       <% end %>
   	</div>
   </div>
+  
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-4 px-5 px-sm-0">
       <table class="table">

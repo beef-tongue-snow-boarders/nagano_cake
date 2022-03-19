@@ -13,6 +13,7 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to admin_item_path(@item.id)
     else
+      @genre = Genre.all
       render :new
     end
   end
@@ -31,6 +32,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
     else
+      @genre = Genre.all
       render :edit
     end
   end
