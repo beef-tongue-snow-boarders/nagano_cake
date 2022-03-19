@@ -32,7 +32,6 @@ class Customer::ShippingAddressesController < ApplicationController
   def destroy
     @shipping_address = ShippingAddress.find(params[:id])
     @shipping_address.destroy
-    # @shipping_addresses = ShippingAddress.all
     redirect_to shipping_addresses_path
   end
 
