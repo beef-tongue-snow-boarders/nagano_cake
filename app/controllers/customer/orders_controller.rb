@@ -20,10 +20,10 @@ class Customer::OrdersController < ApplicationController
       @order.address = ShippingAddress.find(params[:order][:shipping_address_id]).address
       @order.name = ShippingAddress.find(params[:order][:shipping_address_id]).name
     elsif params[:order][:address_number] == "3"
-      # エラー「Customer translation missing:」が発生する
-      # unless @order.valid?
-      #   render :new
-      # end
+      @order.customer_id = current_customer.id
+      unless @order.valid?
+        render :new
+      end
     else
       render :new
     end
