@@ -17,4 +17,9 @@ class Item < ApplicationRecord
   def add_tax_price
         (self.price * 1.10).round
   end
+
+  def self.search(search_word)
+    Item.where(['genre_id LIKE ?', "#{search_word}"])
+  end
+
 end
