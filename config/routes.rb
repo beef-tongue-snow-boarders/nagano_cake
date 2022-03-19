@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     get 'orders/complete'
     delete 'cart_items/all_destroy'
     get 'customers/quit_confirm'
-    patch 'customers/quit'
+    patch 'customers' => 'customers#quit'
+
     resources :orders, only:[:new, :show, :index, :create]
     resources :cart_items, only:[:index, :create, :update, :destroy]
     resources :items, only:[:index, :show]
