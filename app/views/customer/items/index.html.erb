@@ -22,7 +22,7 @@
           <%= image_tag item.get_image(180,180) %>
           <p class="pt-2"><%= item.name %></p>
          <% end %>
-         <span>¥<%= item.price %></span>
+         <span>¥<%= (item.price * 1.10).to_i %></span>
        </div>
       <% end %>
      </div>

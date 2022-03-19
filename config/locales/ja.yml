@@ -3,6 +3,9 @@
     errors:
       messages:
         record_invalid: "バリデーションに失敗: %{errors}"
+        blank: "を入力してください"
+        invalid: "は不正な値です"
+        required: "を入力してください"
     enums:
       order:
         payment_method:

@@ -17,6 +17,7 @@ class Customer::ItemsController < ApplicationController
     @genres = Genre.all
   end
 
+
   private
 
   def item_params
