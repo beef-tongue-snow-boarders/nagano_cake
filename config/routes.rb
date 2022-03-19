@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    get 'search'=> 'searches#search'
     resources :orders, only:[:show, :update] do
       resources :order_details, only:[:update]
     end
