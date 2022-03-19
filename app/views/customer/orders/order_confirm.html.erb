@@ -1,2 +1,71 @@
-<h1>Customer::Orders#order_confirm</h1>
-<p>Find me in app/views/customer/orders/order_confirm.html.erb</p>
+<div class="container">
+  <h2 class="ml-5">注文情報確認</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <table class="table table-bordered">
+          <tr bgcolor="#c0c0c0">
+            <th>商品情報</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+              <td><%= cart_item.amount.to_s(:delimited) %></td>
+              <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+              <% @total_price += cart_item.subtotal %>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="col-md-4">
+        <table class="table table-bordered">
+          <tr bgcolor="#c0c0c0">
+            <td>送料</td>
+            <td><%= @shipping_cost.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @total_price.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td>請求金額</td>
+            <td><%= (@shipping_cost + @total_price).to_s(:delimited) %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <table width="100%">
+    <tr>
+      <td width="10%"><strong>支払い方法</strong></td>
+      <td width="90%"><%= Order.payment_methods_i18n[@order.payment_method] %></td>
+    </tr>
+    <tr>
+      <td><strong>お届け先</strong></td>
+      <td><%= @order.postal_code + @order.address %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= @order.name %></td>
+    </tr>
+  </table>
+
+  <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+    <%= f.hidden_field :postal_code %>
+    <%= f.hidden_field :address %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :shipping_cost, value: @shipping_cost %>
+    <%= f.hidden_field :total_payment, value: @shipping_cost + @total_price %>
+    <%= f.hidden_field :payment_method %>
+    <%= f.hidden_field :status, value: Order.statuses.key(0) %>
+    <div class="d-flex justify-content-center ">
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
+
