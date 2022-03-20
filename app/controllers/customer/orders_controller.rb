@@ -25,7 +25,7 @@ class Customer::OrdersController < ApplicationController
         render :new
       end
     else
-      render :new
+      render :ne
     end
   end
 
