@@ -1,15 +1,18 @@
 <div class='container mt-5'>
-  <h3 class="mb-5">ジャンル編集</h3>
+  <div class="row">
+    <h3 class="mb-5">ジャンル編集</h3>
+  </div>
+  <%= render 'layouts/errors', obj: @genre %>
   <div class='row'>
     <div class="col-12 px-5 px-sm-0">
       <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local: true do |f| %>
-        <%= render 'layouts/errors', obj: @genre %>
-        <div class="form-group">
-          <%= f.label :name, "ジャンル名", class: "col-sm-3" %>
-          <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
-
-          <%= f.submit "変更を保存",class: "btn btn-success btn-lg" %>
-        </div>
+        <table>
+          <tr>
+            <td><%= f.label :name, "ジャンル名", class: "mr-5" %></td>
+            <td><%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %></td>
+            <td><%= f.submit "変更を保存",class: "btn btn-success btn-lg" %></td>
+          </tr>
+        </table>
       <% end %>
   	</div>
   </div>

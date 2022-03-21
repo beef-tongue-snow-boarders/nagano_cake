@@ -3,14 +3,11 @@
   <%= render 'layouts/errors', obj: @item %>
   <div class='row'>
     <div class="col-sm-12 col-md-10 col-lg-7 px-5 px-sm-0 mx-auto">
-
-
       <%= form_with model: @item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
         <div class="form-group row">
           <%= f.label :image, "商品画像", class: "col-sm-3" %>
           <%= f.file_field :image, accept: "image/*" %>
         </div>
-
         <div class="form-group row">
           <%= f.label :name, "商品名", class: "col-sm-3" %>
           <%= f.text_field :name, placeholder:"商品名", class: "form-control col-sm-7" %>
