@@ -1,6 +1,6 @@
-<%= render 'layouts/errors', obj: @customer %>
 <div class="container col-5 mx-auto mt-5">
   <h2 class="mb-5">会員情報編集</h2>
+  <%= render 'layouts/errors', obj: @customer %>
   <div class="row">
     <div>
      <%= form_with model:@customer, local:true do |f| %>

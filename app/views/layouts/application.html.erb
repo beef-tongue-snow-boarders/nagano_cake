@@ -10,16 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-color:#FFF5EE">
     <header>
       <%= render 'layouts/header' %>
     </header>
-
+    <p class="notice text-success"><%= flash[:notice] %></p>
     <main>
       <%= yield %>
     </main>
 
-    <footer>
+    <footer class="mt-5">
       <%= render 'layouts/footer' %>
     </footer>
   </body>
