@@ -1,7 +1,6 @@
-<%= render 'layouts/errors', obj: @customer %>
-
 <div class="container col-5 mx-auto mt-5">
   <h2 class="mb-5"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+  <%= render 'layouts/errors', obj: @customer %>
   <div class="row">
     <div>
       <%= form_with model:@customer, url: admin_customer_path(@customer), method: :patch, local:true do |f| %>
