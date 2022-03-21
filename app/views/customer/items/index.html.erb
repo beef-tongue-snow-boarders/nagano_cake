@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container w-25% mt-5">
   <div class="row">
 
     <div class="col-md-3">
@@ -17,17 +17,17 @@
      <div class="d-flex align-items-center justify-content-around flex-wrap mb-5">
 
       <% @items.each do |item| %>
-       <div class="my-2 mx-1">
-         <%= link_to item_path(item) do %>
+       <div class="my-5 mx-1 text-right">
+         <%= link_to item_path(item), class: 'text-decoration-none' do %>
           <%= image_tag item.get_image(180,180) %>
-          <p class="pt-2"><%= item.name %></p>
+          <div style="color: #C5956B;" class="mt-1"><%= item.name %></div>
          <% end %>
-         <span>¥<%= (item.price * 1.10).to_i %></span>
+         ¥<%= (item.price * 1.10).round.to_s(:delimited) %>
        </div>
       <% end %>
      </div>
+
      <%= paginate @items %>
     </div>
   </div>
 </div>
-

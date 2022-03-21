@@ -8,33 +8,33 @@
       <table>
           <tr>
             <td>名前</td>
-            <td align="right"><%= f.label :'(姓)'%></td>
-            <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'form-control' %></td>
-            <td class="pl-3" align="right"><%= f.label :'(名)' %></td>
-            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'form-control' %></td>
+            <td class="mr-3"><%= f.label :'(姓)'%></td>
+            <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",placeholder: "令和", class: 'form-control' %></td>
+            <td class="pl-3"><%= f.label :'(名)' %></td>
+            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",placeholder: "道子", class: 'form-control' %></td>
           </tr>
           <tr>
             <td>フリガナ</td>
             <td align="right" class="pt-3"><%= f.label :'(セイ)' %></td>
-            <td class="pt-3"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: 'form-control' %></td>
+            <td class="pt-3"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",placeholder: "レイワ", class: 'form-control' %></td>
             <td class="pl-3 pt-3"><%= f.label :'(メイ)' %></td>
-            <td class="pt-3"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: 'form-control' %></td>
+            <td class="pt-3"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",placeholder: "ミチコ", class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-3"><%= f.label :メールアドレス %></td>
-            <td class="pt-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
+            <td class="pt-3"><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sample@example.com", class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-4"><%= f.label :'郵便番号(ハイフンなし)' %></td>
-            <td class="pt-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: 'form-control' %></td>
+            <td class="pt-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",placeholder: "0000000", class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-3"><%= f.label :住所 %></td>
-            <td colspan="3" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: 'form-control' %></td>
+            <td colspan="3" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address",placeholder: "東京都渋谷区代々木神園町0-0", class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-3"><%= f.label :'電話番号(ハイフンなし)'%></td>
-            <td class="pt-3"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: 'form-control' %></td>
+            <td class="pt-3"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",placeholder: "0000000000", class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-3">
@@ -56,7 +56,8 @@
           </tr>
         </table>
       <% end %>
-      <%= render "customer/shared/links" %>
+      <h2 class="mt-5">既に登録済みの方</h2>
+      <p class="mt-5 text-center"><%= render "customer/shared/links" %></p>
     </div>
   </div>
 </div>

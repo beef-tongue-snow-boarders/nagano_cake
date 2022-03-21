@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   end
 
   def add_tax_price
-        (self.price * 1.10).round
+    (self.price * 1.10).round
   end
 
   def self.search(search_word)
