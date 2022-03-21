@@ -1,5 +1,7 @@
 <div class='container mx-auto mt-5'>
-  <h3 class="mb-5">商品詳細</h3>
+  <div class="row">
+    <h2 class="mb-5">商品詳細</h2>
+  </div>
   <div class='row mx-auto'>
     <div class="col-4">
       <%= image_tag @item.get_image(350,350) %>
@@ -22,7 +24,7 @@
           <tr>
             <td class="font-weight-bold">税込価格(税抜価格)</td>
             <td class="h5">
-              <%= @item.add_tax_price %>(<%= @item.price %>)　円
+              ￥<%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)
             </td>
           </tr>
           <tr>
