@@ -1,3 +1,5 @@
+<%= render 'layouts/errors', obj: @customer %>
+
 <div class="container col-5 mx-auto mt-5">
   <h2 class="mb-5"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
   <div class="row">
@@ -6,7 +8,7 @@
         <table>
           <tr>
             <td class="pb-3">会員ID</td>
-            <td class="pb-3 pl-5"><%= @customer.id %></td>
+            <td colspan="2"  class="pb-3 pl-3"><%= @customer.id %></td>
           </tr>
           <tr>
             <td>氏名</td>
@@ -35,7 +37,7 @@
             <td class="pt-3"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: 'form-control' %></td>
           </tr>
           <tr>
-            <td colspan="2" class="pt-4"><%= f.label :メールアドレス %></td>
+            <td colspan="2" class="pt-4 pr-3"><%= f.label :メールアドレス %></td>
             <td class="pt-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
           </tr>
           <tr>

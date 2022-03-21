@@ -2,11 +2,10 @@ class Customer::ShippingAddressesController < ApplicationController
   def create
     @shipping_address = ShippingAddress.new(shipping_address_params)
     @shipping_address.customer_id = current_customer.id
+    @shipping_addresses = current_customer.shipping_addresses
     if @shipping_address.save
-      @shipping_addresses = ShippingAddress.all
-      render 'index'
+      redirect_to request.referer, notice: "配送先を登録しました。"
     else
-      @shipping_addresses = ShippingAddress.all
       render 'index'
     end
   end
@@ -19,11 +18,11 @@ class Customer::ShippingAddressesController < ApplicationController
   def edit
     @shipping_address = ShippingAddress.find(params[:id])
   end
-  
+
   def update
     @shipping_address = ShippingAddress.find(params[:id])
     if @shipping_address.update(shipping_address_params)
-      redirect_to shipping_addresses_path
+      redirect_to shipping_addresses_path, notice: "配送先を変更しました。"
     else
       render 'edit'
     end

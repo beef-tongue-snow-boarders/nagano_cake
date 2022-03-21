@@ -1,3 +1,4 @@
+<%= render 'layouts/errors', obj: @customer %>
 <div class="container col-5 mx-auto mt-5">
   <h2 class="mb-5">会員情報編集</h2>
   <div class="row">
@@ -5,34 +6,34 @@
      <%= form_with model:@customer, local:true do |f| %>
       <table>
           <tr>
-            <td>氏名</td>
-            <td align="right"></td>
-            <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'form-control' %></td>
-            <td class="pl-3" align="right"></td>
-            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'form-control' %></td>
+            <td class="pt-3">氏名</td>
+            <td align="right" class="pt-3"></td>
+            <td class="pt-3 pl-4"><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'form-control' %></td>
+            <td class="pl-3 pt-3"></td>
+            <td class="pt-3"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'form-control' %></td>
           </tr>
           <tr>
-            <td>フリガナ</td>
+            <td class="pt-3">フリガナ</td>
             <td align="right" class="pt-3"></td>
-            <td class="pt-3"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: 'form-control' %></td>
+            <td class="pt-3 pl-4"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: 'form-control' %></td>
             <td class="pl-3 pt-3"></td>
             <td class="pt-3"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-4"><%= f.label :郵便番号 %></td>
-            <td class="pt-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: 'form-control' %></td>
+            <td class="pt-3 pl-4"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: 'form-control' %></td>
           </tr>
           <tr>
-            <td colspan="2" class="pt-3"><%= f.label :住所 %></td>
-            <td colspan="3" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: 'form-control' %></td>
+            <td colspan="2" class="pt-4"><%= f.label :住所 %></td>
+            <td colspan="3" class="pt-3 pl-4"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: 'form-control' %></td>
           </tr>
           <tr>
-            <td colspan="2" class="pt-3"><%= f.label :電話番号 %></td>
-            <td class="pt-3"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: 'form-control' %></td>
+            <td colspan="2" class="pt-4"><%= f.label :電話番号 %></td>
+            <td class="pt-3 pl-4"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: 'form-control' %></td>
           </tr>
           <tr>
-            <td colspan="2" class="pt-3"><%= f.label :メールアドレス %></td>
-            <td class="pt-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
+            <td colspan="2" class="pt-4"><%= f.label :メールアドレス %></td>
+            <td class="pt-3 pl-4"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
           </tr>
           <tr>
             <td align="center" colspan="3" class="pt-4"><%= f.submit "編集内容を保存", class: 'btn btn-success w-30' %></td>
