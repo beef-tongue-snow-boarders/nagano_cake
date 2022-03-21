@@ -1,6 +1,6 @@
-<%= render 'layouts/errors', obj: @shipping_address %>
 <div class="container col-8 mx-auto mt-5">
   <h2 class="mb-5">配送先編集</h2>
+  <%= render 'layouts/errors', obj: @shipping_address %>
   <div class="row">
     <div>
      <%= form_with model:@shipping_address, local:true do |f| %>

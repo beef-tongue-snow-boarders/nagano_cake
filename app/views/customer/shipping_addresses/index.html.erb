@@ -1,7 +1,7 @@
-<%= render 'layouts/errors', obj: @shipping_address %>
 <p class="notice text-success"><%= flash[:notice] %></p>
 <div class="container col-8 mx-auto mt-5">
   <h2 class="mb-5">配送先登録/一覧</h2>
+  
   <div class="row">
      <%= form_with model:@shipping_address, url: shipping_addresses_path, local:true do |f| %>
       <table>
@@ -24,7 +24,7 @@
 
   <div class="mt-5 row">
     <table class="table col">
-      <thead class="table-active border">
+      <thead bgcolor="#816F5B" class="col-3 border border-dark text-light">
         <tr>
           <td class="col-md-2 border border-dark postcode">郵便番号</td>
           <td class="col-md-5 border border-dark address">住所</td>
