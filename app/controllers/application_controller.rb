@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  devise_group :admin_or_customer, contains: [:admin, :customer]
-  before_action :authenticate_admin_or_customer!,except: [:top, :about, :index, :show]
+  devise_group :customer_or_admin, contains: [:customer, :admin]
+  before_action :authenticate_customer_or_admin!,except: [:top, :about, :index, :show, :create]
 
   before_action :item_search
   def item_search
