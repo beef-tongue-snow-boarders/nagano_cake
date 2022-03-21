@@ -1,10 +1,10 @@
 <div class="container">
-  <h3 class="ml-5">注文履歴詳細</h3>
+  <h2 class="mt-5 mb-5 ml-5">注文履歴詳細</h2>
   <div class="row">
     <table class="table table-borderless">
       <tr width="100%">
-        <td width="20%"><strong>購入者</strong></td>
-        <td width="800%"><%= link_to @order.customer.name_display, admin_path(search: @order.customer_id) %></td>
+        <td width="15%"><strong>購入者</strong></td>
+        <td width="85%"><%= link_to @order.customer.name_display, admin_path(search: @order.customer_id) %></td>
       </tr>
       <tr>
         <td><strong>注文日</strong></td>
@@ -38,7 +38,7 @@
   <div class="row">
     <div class="col-md-8">
       <table class="table">
-        <tr width="100%">
+        <tr width="100%" bgcolor="#816F5B" class="text-light">
           <th width="30%">商品名</th>
           <th width="20%">単価(税込)</th>
           <th width="10%">数量</th>
@@ -48,9 +48,9 @@
         <% @order.order_details.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.price.to_s(:delimited) %></td>
+            <td>￥<%= order_detail.price.to_s(:delimited) %></td>
             <td><%= order_detail.amount.to_s(:delimited) %></td>
-            <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
+            <td>￥<%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
             <td>
               <div class="text-danger">
                 <%= OrderDetail.making_statuses_i18n[order_detail.making_status] %>
@@ -68,15 +68,15 @@
       <table class="table table-borderless">
         <tr width="100%">
           <td width="50%"><strong>商品合計</strong></td>
-          <td width="50%"><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %>円</td>
+          <td width="50%">￥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
         </tr>
         <tr>
           <td><strong>送料</strong></td>
-          <td><%= @order.shipping_cost.to_s(:delimited) %>円</td>
+          <td>￥<%= @order.shipping_cost.to_s(:delimited) %></td>
         </tr>
         <tr>
           <td><strong>請求金額合計</strong></td>
-          <td><strong><%= @order.total_payment.to_s(:delimited) %>円</strong></td>
+          <td><strong>￥<%= @order.total_payment.to_s(:delimited) %></strong></td>
         </tr>
       </table>
     </div>
