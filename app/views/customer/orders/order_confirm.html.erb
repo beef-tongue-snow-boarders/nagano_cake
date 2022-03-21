@@ -1,10 +1,10 @@
 <div class="container">
-  <h3 class="ml-5">注文情報確認</h3>
+  <h2 class="mt-5 mb-5 ml-5">注文情報確認</h2>
   <div class="container">
     <div class="row">
       <div class="col-md-8">
         <table class="table table-bordered">
-          <tr bgcolor="#c0c0c0">
+          <tr bgcolor="#816F5B" class="text-light">
             <th>商品情報</th>
             <th>単価(税込)</th>
             <th>数量</th>
@@ -13,9 +13,9 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= cart_item.item.name %></td>
-              <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+              <td>￥<%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
               <td><%= cart_item.amount.to_s(:delimited) %></td>
-              <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+              <td>￥<%= cart_item.subtotal.to_s(:delimited) %></td>
               <% @total_price += cart_item.subtotal %>
             </tr>
           <% end %>
@@ -23,17 +23,17 @@
       </div>
       <div class="col-md-4">
         <table class="table table-bordered">
-          <tr bgcolor="#c0c0c0">
-            <td>送料</td>
-            <td><%= @shipping_cost.to_s(:delimited) %></td>
+          <tr>
+            <td bgcolor="#816F5B" class="text-light">送料</td>
+            <td>￥<%= @shipping_cost.to_s(:delimited) %></td>
           </tr>
           <tr>
-            <td>商品合計</td>
-            <td><%= @total_price.to_s(:delimited) %></td>
+            <td bgcolor="#816F5B" class="text-light">商品合計</td>
+            <td>￥<%= @total_price.to_s(:delimited) %></td>
           </tr>
           <tr>
-            <td>請求金額</td>
-            <td><%= (@shipping_cost + @total_price).to_s(:delimited) %></td>
+            <td bgcolor="#816F5B" class="text-light">請求金額</td>
+            <td>￥<%= (@shipping_cost + @total_price).to_s(:delimited) %></td>
           </tr>
         </table>
       </div>

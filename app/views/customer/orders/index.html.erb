@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="ml-5">注文情報確認</h3>
+  <h2 class="mt-5 mb-5 ml-5 ">注文情報確認</h2>
   <table class="table table-bordered">
     <tr width="100%" bgcolor="#816F5B" class="text-light">
       <th width="10%">注文日</th>
@@ -22,7 +22,7 @@
             <%= order_detail.item.name %><br>
           <% end %>
         </td>
-        <td class="display-table-cell align-middle"><%= order.total_payment.to_s(:delimited) %>円</td>
+        <td class="display-table-cell align-middle">￥<%= order.total_payment.to_s(:delimited) %></td>
         <td class="display-table-cell align-middle"><%= Order.statuses_i18n[order.status] %></td>
         <td class="display-table-cell align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-secondary" %></td>
       </tr>

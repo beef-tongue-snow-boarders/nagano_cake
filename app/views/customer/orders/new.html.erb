@@ -1,10 +1,8 @@
 <div class="container">
-  <h3 class="ml-5">注文情報入力</h3>
-
+  <h2 class="mt-5 mb-5 ml-5">注文情報入力</h2>
   <%= render "layouts/errors", obj: @order %>
-
+  <p><strong>支払い方法</strong></p>
   <%= form_with model: @order, url: orders_order_confirm_path, method: :post, local: true do |f| %>
-    <p><strong>支払い方法</strong></p>
     <div class="ml-3">
       <%= f.radio_button :payment_method, Order.payment_methods.key(0), {:checked => true} %>
       <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
@@ -54,7 +52,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-center ">
-      <%= f.submit "確認画面に進む", class: "btn btn-primary" %>
+      <%= f.submit "確認画面に進む", class: "btn btn-secondary" %>
     </div>
   <% end %>
 </div>
