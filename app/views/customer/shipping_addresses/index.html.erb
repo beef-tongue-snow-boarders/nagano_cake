@@ -1,33 +1,35 @@
+<%= render 'layouts/errors', obj: @shipping_address %>
+<p class="notice text-success"><%= flash[:notice] %></p>
 <div class="container col-8 mx-auto mt-5">
   <h2 class="mb-5">配送先登録/一覧</h2>
   <div class="row">
      <%= form_with model:@shipping_address, url: shipping_addresses_path, local:true do |f| %>
       <table>
           <tr>
-            <td colspan="2" class="pt-4"><%= f.label :'郵便番号(ハイフンなし)' %></td>
+            <td colspan="2" class="pt-4 pr-4"><%= f.label :'郵便番号(ハイフンなし)' %></td>
             <td class="pt-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "0000000",class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-3"><%= f.label :住所 %></td>
-            <td colspan="3" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0",class: 'form-control' %></td>
+            <td colspan="4" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0",class: 'form-control' %></td>
           </tr>
           <tr>
             <td colspan="2" class="pt-3"><%= f.label :宛名 %></td>
             <td colspan="3" class="pt-3"><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和道子", class: 'form-control' %></td>
-            <td align="center" colspan="3" class="pt-4"><%= f.submit "新規登録", class: 'btn btn-success w-30' %></td>
+            <td align="center" colspan="3" class="pt-4 pl-4"><%= f.submit "新規登録", class: 'btn btn-success w-30' %></td>
           </tr>
       </table>
       <% end %>
   </div>
 
   <div class="mt-5 row">
-    <table class="table col-md-7 deliver_destination_index_table">
+    <table class="table col">
       <thead class="table-active border">
         <tr>
-          <td class="border border-dark postcode">郵便番号</td>
-          <td class="border border-dark address">住所</td>
-          <td class="border border-dark destination">宛名</td>
-          <td class="border border-dark btn-space"></td>
+          <td class="col-md-2 border border-dark postcode">郵便番号</td>
+          <td class="col-md-5 border border-dark address">住所</td>
+          <td class="col-md-2 border border-dark destination">宛名</td>
+          <td class="col-md-4 border border-dark btn-space"></td>
         </tr>
       </thead>
       <tbody>

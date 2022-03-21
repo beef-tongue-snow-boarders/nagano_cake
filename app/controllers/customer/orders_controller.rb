@@ -20,9 +20,12 @@ class Customer::OrdersController < ApplicationController
       @order.address = ShippingAddress.find(params[:order][:shipping_address_id]).address
       @order.name = ShippingAddress.find(params[:order][:shipping_address_id]).name
     elsif params[:order][:address_number] == "3"
-     @order.customer_id = current_customer.id
+      @order.customer_id = current_customer.id
+      unless @order.valid?
+        render :new
+      end
     else
-      render :new
+      render :ne
     end
   end
 

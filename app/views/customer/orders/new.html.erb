@@ -1,19 +1,12 @@
 <div class="container">
   <h3 class="ml-5">注文情報入力</h3>
 
-  <% if @order.errors.any? %>
-    <%= @order.errors.count %>件のエラーが発生しました
-    <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <%= render "layouts/errors", obj: @order %>
 
   <%= form_with model: @order, url: orders_order_confirm_path, method: :post, local: true do |f| %>
     <p><strong>支払い方法</strong></p>
     <div class="ml-3">
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0), {:checked => true} %>
       <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
     </div>
     <div class="ml-3 mb-3">

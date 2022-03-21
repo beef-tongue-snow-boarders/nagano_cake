@@ -9,4 +9,12 @@ class Order < ApplicationRecord
   validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
   validates :address, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :name, presence: true
+
+  def total_amount
+    number = 0
+    self.order_details.each do |order_detail|
+      number += order_detail.amount
+    end
+    number
+  end
 end
