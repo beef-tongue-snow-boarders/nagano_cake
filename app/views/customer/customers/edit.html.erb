@@ -3,7 +3,7 @@
   <%= render 'layouts/errors', obj: @customer %>
   <div class="row">
     <div>
-     <%= form_with model:@customer, local:true do |f| %>
+     <%= form_with model: @customer, url: customers_path, local:true do |f| %>
       <table>
           <tr>
             <td class="pt-3">氏名</td>

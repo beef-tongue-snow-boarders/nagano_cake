@@ -5,13 +5,13 @@ class Customer::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customer_path(current_customer), notice: "会員情報を更新しました。"
+      redirect_to customers_path, notice: "会員情報を更新しました。"
     else
       render "edit"
     end

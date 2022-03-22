@@ -1,14 +1,17 @@
- <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#3C240A	">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span><%= image_tag 'nagano_cake_logo.png',size:'150x100' %></span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#3C240A	">
+  <div class="container">
+    <a class="navbar-brand" href="/"><span><%= image_tag 'nagano_cake_logo.png',size:'150x100' %></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
+          <li class="mt-2 mr-5" style="color: #FFFFFF;">
+            ようこそ、<%= current_customer.last_name %>さん！
+          </li>
           <li>
-            <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
+            <%= link_to customer_path,class: 'nav-link text-light' do %>
               <i class="fa-solid fa-circle-user"></i> マイページ
             <% end %>
           </li>
@@ -79,8 +82,7 @@
             <% end %>
           </li>
         <% end %>
-    </ul>
-    <div>
+      </ul>
       <% if admin_signed_in? %>
         <%= render 'layouts/admin_search_form', search_item: @search_item %>
       <% else %>
