@@ -4,13 +4,14 @@
      <%= render 'customer/items/genre-search', genres: @genres %>
     </div>
     <div class="col-md-9 mx-auto">
-      <div class="jumbotron">
-        <p class="h4">
+      <div style="background-image: url(<%= asset_path('visit-almaty-wN4D-mVR7fE-unsplash') %>);
+                  background-size: cover; background-position: center; height:500px;" class="jumbotron">
+        <div style="position: absolute; bottom: 50px;" class="h4"><strong>
           ようこそ、ながのcakeへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。
-        </p>
+          購入には会員登録が必要になります。</strong>
+        </div>
       </div>
     </div>
   </div>
