@@ -28,9 +28,9 @@
             <% end %>
             <div>
               <%= link_to item_path(item) do %>
-                <p class="text-dark mt-2"><%= item.name %></p>
+                <p style="color: #C5956B;"class="mt-2 text-center"><%= item.name %></p>
               <% end %>
-              <p>￥<%= item.price.to_s(:delimited) %></p>
+              <p class="text-center">¥ <%= item.price.to_s(:delimited) %></p>
             </div>
           </div>
         <% end %>
@@ -39,7 +39,7 @@
   </div>
   <div class="row">
     <div class="col-12 text-right">
-      <%= link_to "すべての商品を見る>", items_path %>
+      <%= link_to "すべての商品を見る", items_path %>
     </div>
   </div>
 </div>

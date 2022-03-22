@@ -64,7 +64,7 @@
     <%= f.hidden_field :payment_method %>
     <%= f.hidden_field :status, value: Order.statuses.key(0) %>
     <div class="d-flex justify-content-center ">
-      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+      <%= f.submit "注文を確定する", class: "btn",style: "background-color: #816F5B; color: #fff;" %>
     </div>
   <% end %>
 </div>

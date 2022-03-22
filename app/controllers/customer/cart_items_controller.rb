@@ -12,6 +12,7 @@ class Customer::CartItemsController < ApplicationController
       cart_item.save
       redirect_to cart_items_path
     elsif @cart_item.save
+      flash[:notice] = "カートに商品を追加しました。"
       @cart_items = current_customer.cart_items.all
       render 'index'
     else
@@ -21,8 +22,10 @@ class Customer::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(cart_item_params)
-    redirect_to request.referer
+    if cart_item.update(cart_item_params)
+      flash[:notice] = "商品の数量を変更しました。"
+      redirect_to request.referer
+    end
   end
 
   def destroy
