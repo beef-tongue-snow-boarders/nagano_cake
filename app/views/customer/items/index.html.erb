@@ -20,9 +20,9 @@
        <div class="my-5 mx-1 text-right">
          <%= link_to item_path(item), class: 'text-decoration-none' do %>
           <%= image_tag item.get_image(180,180) %>
-          <div style="color: #C5956B;" class="mt-1"><%= item.name %></div>
+          <div style="color: #C5956B;" class="mt-1 text-center"><%= item.name %></div>
          <% end %>
-         ¥<%= (item.price * 1.10).round.to_s(:delimited) %>
+         <div class="text-center"> ¥<%= (item.price * 1.10).round.to_s(:delimited)%></div>
        </div>
       <% end %>
      </div>
