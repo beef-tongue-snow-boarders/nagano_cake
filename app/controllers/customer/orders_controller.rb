@@ -1,5 +1,5 @@
 class Customer::OrdersController < ApplicationController
-
+  before_action :authenticate_customer!
   before_action :ensure_cart_item, only: [:new, :order_confirm]
 
   def new
