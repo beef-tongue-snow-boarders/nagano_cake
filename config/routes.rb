@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :customers, skip: [:passwords], controllers: {
+  devise_for :customer, skip: [:passwords], controllers: {
     registrations: "customer/registrations",
     sessions: 'customer/sessions'
   }
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :show, :index, :create]
     resources :cart_items, only:[:index, :create, :update, :destroy]
     resources :items, only:[:index, :show]
-    resources :customers, only:[:show, :edit, :update]
+    resource :customers, only:[:show, :edit, :update]
     resources :shipping_addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 end
