@@ -1,4 +1,5 @@
 class Customer::ItemsController < ApplicationController
+  before_action :authenticate_customer!,except: [:top, :about, :index, :show]
   def index
     @items = Item.page(params[:page])
     @genres = Genre.all

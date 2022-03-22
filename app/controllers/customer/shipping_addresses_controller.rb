@@ -1,4 +1,5 @@
 class Customer::ShippingAddressesController < ApplicationController
+  before_action :authenticate_customer!
   def create
     @shipping_address = ShippingAddress.new(shipping_address_params)
     @shipping_address.customer_id = current_customer.id
