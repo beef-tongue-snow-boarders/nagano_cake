@@ -3,7 +3,7 @@
     <h2 class="mb-5">商品一覧</h2>
     <div class="ml-auto text-right">
       <%= link_to new_admin_item_path, class: "btn" do %>
-        <i class="fas fa-plus-circle display-4 text-success"></i>
+        <i class="fas fa-plus-circle display-4" style="color:#816F5B;"></i>
       <% end %>
     </div>
   </div>
@@ -39,9 +39,10 @@
               <% end %>
             </tr>
           <% end %>
-          <%= paginate @items, class: 'justify-content-center' %>
+
         </tbody>
       </table>
+      <%= paginate @items, class: 'justify-content-center' %>
     </div>
   </div>
 </div>
