@@ -11,7 +11,28 @@
       ぜひご注文ください。
     </p>
   </div>
-  <div class="row">
-    <!--後で画像挿入-->
+  <div>
+    <div id="carouselExampleFade carouselExampleIndicators" class="carousel slide carousel-fade mx-auto col-md-10" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner text-center">
+       <div class="carousel-item active">
+        <%= image_tag 'deserts.jpg',size: '700x400' %>
+       </div>
+       <div class="carousel-item">
+        <%= image_tag 'ichigo.jpg',size: '700x400' %>
+       </div>
+       <div class="carousel-item">
+        <%= image_tag 'dsc.jpg',size: '700x400' %>
+       </div>
+       <div class="carousel-item">
+        <%= image_tag 'bake.jpg',size: '700x400' %>
+       </div>
+      </div>
+    </div>
   </div>
 </div>
