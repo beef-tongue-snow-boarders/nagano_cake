@@ -9,6 +9,9 @@
         <strong>注文ステータス</strong>
         <%= form_with url: admin_path, method: :get, local: true do |f| %>
           <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+          <% if @search_pattern == "1" || @search_pattern == "2"%>
+            <%= f.hidden_field :customer_id, value: @customer_id %>
+          <% end %>
           <%= f.submit "検索", class: "btn btn-outline-light" %>
         <% end %>
       </th>
