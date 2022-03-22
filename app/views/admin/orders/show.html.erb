@@ -4,7 +4,7 @@
     <table class="table table-borderless">
       <tr width="100%">
         <td width="15%"><strong>購入者</strong></td>
-        <td width="85%"><%= link_to @order.customer.name_display, admin_path(search: @order.customer_id) %></td>
+        <td width="85%"><%= link_to @order.customer.name_display, admin_path(customer_id: @order.customer_id) %></td>
       </tr>
       <tr>
         <td><strong>注文日</strong></td>

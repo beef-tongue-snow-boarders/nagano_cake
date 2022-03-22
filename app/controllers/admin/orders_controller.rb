@@ -2,13 +2,15 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-
-    if params[:search] != nil
-      @orders = Order.where(customer_id: params[:search]).order(created_at: "DESC").page(params[:page])
-      @customer =  Customer.find(params[:search]).name_display + "さんの"
+    if params[:customer_id] != nil
+      @orders = Order.where(customer_id: params[:customer_id]).order(created_at: "DESC").page(params[:page])
+      @heading =  "#{Customer.find(params[:customer_id]).name_display}さんの注文履歴"
+    elsif params[:status] != nil
+      @orders = Order.where(status: params[:status]).order(created_at: "DESC").page(params[:page])
+      @heading = "「#{Order.statuses_i18n[params[:status]]}」の注文履歴"
     else
       @orders = Order.all.order(created_at: "DESC").page(params[:page])
-      @customer = ""
+      @heading = "注文履歴詳細"
     end
   end
 
