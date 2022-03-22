@@ -20,7 +20,7 @@
          <%= f.label :amount, "個数選択" %>
          <%= f.select :amount, *[1..10] %>
          <%= f.hidden_field :item_id, :value => @item.id %>
-         <%= f.submit "カートに入れる", class: 'btn btn-success ml-3' %>
+         <%= f.submit "カートに入れる", class: 'btn ml-3',style: "background-color: #816F5B; color: #fff;" %>
         <% end %>
        <% end %>
      </div>

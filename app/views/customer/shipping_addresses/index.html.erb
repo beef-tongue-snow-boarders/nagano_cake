@@ -15,7 +15,7 @@
           <tr>
             <td colspan="2" class="pt-3"><%= f.label :宛名 %></td>
             <td colspan="3" class="pt-3"><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和道子", class: 'form-control' %></td>
-            <td align="center" colspan="3" class="pt-4 pl-4"><%= f.submit "新規登録", class: 'btn btn-success w-30' %></td>
+            <td align="center" colspan="3" class="pt-4 pl-4"><%= f.submit "新規登録", class: 'btn  w-30',style: "background-color: #816F5B; color: #fff;" %></td>
           </tr>
       </table>
       <% end %>
@@ -38,7 +38,7 @@
             <td class="border border-dark"><%= shipping_address.address %></td>
             <td class="border border-dark"><%= shipping_address.name %></td>
             <td class="border border-dark text-center">
-              <%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-success" %>
+              <%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn",style: "background-color: #816F5B; color: #fff;" %>
               <%= link_to "削除する", shipping_address_path(shipping_address), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
             </td>
           </tr>
