@@ -1,0 +1,4 @@
+$("#genres").html("<%= j(render 'admin/genres/index', genres: @genres) %>");
+$("#genre_name").val('');
+$("#notice").html("<%= flash[:notice] %>");
+$("#error").html("<%= j(render 'layouts/errors', obj: @genre) %>");
