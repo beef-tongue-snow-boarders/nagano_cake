@@ -1,5 +1,8 @@
 <div class="container">
-  <h2 class="mt-5 mb-5 ml-5"><%= @heading %></h2>
+  <h2 class="mt-5 ml-5"><%= @heading %></h2>
+  <% if  @customer_id == nil %>
+    <p class="alert alert-secondary"><%= @count_status %></p>
+  <% end %>
   <table class="table table-bordered">
     <tr width="100%" bgcolor="#816F5B" class="text-light">
       <th width="30%">購入日時</th>

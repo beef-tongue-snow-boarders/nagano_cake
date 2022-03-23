@@ -4,17 +4,17 @@ class Admin::OrderDetailsController < ApplicationController
   def update
     order_detail = OrderDetail.find(params[:id])
     order_detail.update(order_detail_params)
+    @order = Order.find(order_detail.order_id)
     if params[:order_detail][:making_status] == OrderDetail.making_statuses.key(2)
-      order = Order.find(order_detail.order_id)
-      order.status = Order.statuses.key(2)
-      order.save
+      @order.status = Order.statuses.key(2)
+      @order.save
     end
     if production_complete_all?(order_detail.order_id)
-      order = Order.find(order_detail.order_id)
-      order.status =  Order.statuses.key(3)
-      order.save
+      @order.status =  Order.statuses.key(3)
+      @order.save
     end
-    redirect_to request.referer
+    # 非同期通信(jsファイルへの受け渡し:@order)
+    # redirect_to request.referer
   end
 
   private
