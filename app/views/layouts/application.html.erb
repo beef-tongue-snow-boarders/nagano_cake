@@ -15,7 +15,7 @@
     <header>
       <%= render 'layouts/header' %>
     </header>
-    <div id="notice" class="text-success text-center mt-3"></div>
+    <div class="notice text-success text-center mt-3"><%= flash[:notice] %></div>
     <main>
       <%= yield %>
     </main>

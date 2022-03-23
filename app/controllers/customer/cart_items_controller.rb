@@ -12,7 +12,7 @@ class Customer::CartItemsController < ApplicationController
       cart_item.save
       redirect_to cart_items_path
     elsif @cart_item.save
-      flash[:notice] = "カートに商品を追加しました。"
+      flash.now[:notice] = "カートに商品を追加しました。"
       @cart_items = current_customer.cart_items.all
       render 'index'
     else
@@ -21,23 +21,22 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def update
-    cart_item = CartItem.find(params[:id])
-    if cart_item.update(cart_item_params)
-      flash[:notice] = "商品の数量を変更しました。"
-      redirect_to request.referer
+    @cart_item = CartItem.find(params[:id])
+    @cart_items = current_customer.cart_items.all
+    if @cart_item.update(cart_item_params)
+      flash.now[:notice] = "商品の数量を変更しました。"
     end
   end
 
   def destroy
-    cart_item = CartItem.find(params[:id])
-    cart_item.destroy
-    redirect_to request.referer
+    @cart_items = current_customer.cart_items.all
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
   end
 
   def all_destroy
-    cart_items = CartItem.all
-    cart_items.destroy_all
-    redirect_to request.referer
+    @cart_items = CartItem.all
+    @cart_items.destroy_all
   end
 
 
