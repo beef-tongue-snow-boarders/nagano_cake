@@ -1,0 +1,17 @@
+<%= form_with model:shipping_address, url: shipping_addresses_path, local: false do |f| %>
+  <table>
+      <tr>
+        <td colspan="2" class="pt-4 pr-4"><%= f.label :'郵便番号(ハイフンなし)' %></td>
+        <td class="pt-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "0000000",class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="pt-3"><%= f.label :住所 %></td>
+        <td colspan="4" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0",class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="pt-3"><%= f.label :宛名 %></td>
+        <td colspan="3" class="pt-3"><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和道子", class: 'form-control' %></td>
+        <td align="center" colspan="3" class="pt-4 pl-4"><%= f.submit "新規登録", class: 'btn  w-30',style: "background-color: #816F5B; color: #fff;" %></td>
+      </tr>
+  </table>
+<% end %>
