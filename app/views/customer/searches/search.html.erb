@@ -1,16 +1,16 @@
 <div class="container mt-5">
   <div class="row">
-    <h2>"<%= @q %>"検索結果</h2>
+    <h2>"<%= @q %>"　検索結果</h2>
   </div>
     <% if @results.exists? %>
       <div class="row">
         <div class="col-12">
-          <div class="d-flex flex-wrap">
+          <div class="d-flex align-items-center justify-content-around flex-wrap mb-5">
             <% @results.each do |item| %>
               <%= link_to item_path(item) do %>
-                <%= image_tag item.get_image(300,300), class: "mr-5" %>
-                <p class="pt-2"><%= item.name %></p>
-                <p>￥<%= item.price.to_s(:delimited) %></p>
+                <%= image_tag item.get_image(300,300), class: "text-decoration-none" %>
+                <p class="mt-2 text-center" style="color: #C5956B;"><%= item.name %></p>
+                <p class="text-center">￥<%= item.price.to_s(:delimited) %></p>
               <% end %>
             <% end %>
           </div>
