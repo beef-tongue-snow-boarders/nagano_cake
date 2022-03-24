@@ -25,7 +25,7 @@ class Customer::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "退会しました。"
   end
 
 
