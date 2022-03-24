@@ -20,10 +20,12 @@
          <td><%= cart_item.item.name %></td>
          <td>¥<%= (cart_item.item.add_tax_price).to_i.to_s(:delimited) %></td>
          <td>
-             <%= form_with model: cart_item, url: cart_item_path(cart_item),method: :patch, local: false do |f| %>
-              <%= f.number_field :amount, min: 1, max: 10, id: "amount_cart" %>
-              <%= f.submit "変更", class: 'btn btn-sm',style: "background-color: #816F5B; color: #fff;" %>
-             <% end %>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item),method: :patch, local: false do |f| %>
+           <div class="d-flex justify-content-center">
+             <%= f.number_field :amount, min: 1, max: 9,class: 'form-control form-control-sm mr-2',style: 'width: 50px', id: "amount_cart" %>
+             <%= f.submit "変更", class: 'btn btn-sm',style: "background-color: #816F5B; color: #fff;" %>
+           </div>
+          <% end %>
          </td>
          <td>
              <% subtotal = ((cart_item.item.price*cart_item.amount)*1.10).to_i %>
