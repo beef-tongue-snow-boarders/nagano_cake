@@ -16,7 +16,9 @@
           <% if @customer_id != nil %>
             <%= f.hidden_field :customer_id, value: @customer_id %>
           <% end %>
-          <%= f.submit "検索", class: "btn btn-outline-light" %>
+          <%= f.button :type => "submit", style: 'border-style: none; background-color: #816F5B; color: #fff;' do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
         <% end %>
       </th>
     </tr>
