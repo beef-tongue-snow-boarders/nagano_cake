@@ -12,11 +12,13 @@
       <th width="20%">注文個数</th>
       <th width="30%">注文ステータス
         <%= form_with url: admin_path, method: :get, local: true do |f| %>
-          <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-          <% if @customer_id != nil %>
-            <%= f.hidden_field :customer_id, value: @customer_id %>
-          <% end %>
-          <%= f.submit "検索", class: "btn btn-outline-light" %>
+          <div class="form-inline">
+            <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]}, {}, class: 'form-control' %>
+            <% if @customer_id != nil %>
+              <%= f.hidden_field :customer_id, value: @customer_id %>
+            <% end %>
+            <%= f.submit "検索", class: "btn btn-outline-light" %>
+          </div>
         <% end %>
       </th>
     </tr>
