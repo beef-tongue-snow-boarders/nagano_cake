@@ -1,13 +1,13 @@
-<div class='container mx-auto mt-5'>
+<div class='container mx-auto my-5'>
   <h2 class="mb-5">商品編集</h2>
   <%= render 'layouts/errors', obj: @item %>
   <div class='row'>
-    <div class="col-sm-12 col-md-10 col-lg-7 px-5 px-sm-0 mx-auto">
+    <div class="col-12">
       <%= form_with model: @item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
-        <table>
+        <table class="mx-auto mb-5">
           <tr>
             <td><%= f.label :image, "商品画像" %></td>
-            <td class="pb-3"><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
+            <td class="pb-3"><%= f.file_field :image, accept: "image/*" %></td>
           </tr>
           <tr>
             <td><%= f.label :name, "商品名" %></td>
@@ -19,7 +19,7 @@
           </tr>
           <tr>
             <td><%= f.label :genre, "ジャンル" %></td>
-            <td class="pb-3"><%= f.collection_select(:genre_id, @genre, :id, :name, prompt: "--選択してください--") %></td>
+            <td class="pb-3"><%= f.collection_select(:genre_id, @genre, :id, :name, {prompt: "--選択してください--"}, {class: "form-control"}) %></td>
           </tr>
           <tr>
             <td><%= f.label :price, "税抜き価格" %></td>
@@ -32,7 +32,7 @@
               <%= f.label :is_active, "販売中", value: true, class: "ml-2" %>
               <%= f.radio_button :is_active, false, class: "ml-3" %>
               <%= f.label :is_active, "販売停止中", value: false, class: "ml-2" %>
-            </td class="pb-3">
+            </td>
           </tr>
           <tr>
             <td align="center" colspan="5" class="pt-4"><%= f.submit "変更を保存", class: 'btn btn-lg',style: "background-color: #816F5B; color: #fff;" %></td>
