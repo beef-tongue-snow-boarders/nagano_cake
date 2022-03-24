@@ -17,7 +17,7 @@ class Admin::OrdersController < ApplicationController
       @count_status = count_status
     else
       @orders = Order.all.order(created_at: "DESC").page(params[:page])
-      @heading = "注文履歴詳細（全#{Order.all.count}件）"
+      @heading = "注文履歴一覧（全#{Order.all.count}件）"
       @customer_id = nil
       @count_status = count_status
     end
