@@ -1,6 +1,8 @@
   <%= search_form_for search_item, url: search_path do |f| %>
     <div class="form-inline">
       <%= f.search_field :name_cont, placeholder: "Search", class: "form-control" %>
-      <%= f.submit '商品検索', class: "btn btn-outline-light" %>
+      <%= f.button :type => "submit", style: 'border-style: none; background-color: #3C240A; color: #fff;', class: 'ml-2' do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
     </div>
   <% end %>

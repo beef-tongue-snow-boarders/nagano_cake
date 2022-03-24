@@ -20,14 +20,8 @@
               <i class="fa-solid fa-cake-candles"></i> 商品一覧
             <% end %>
           </li>
-          <li>
-            <%=  link_to cart_items_path ,class: 'nav-link text-light' do %>
-              <% if current_customer.cart_items.present? %>
-                <i class="fa-solid fa-cart-plus"></i> カート<%="(#{current_customer.cart_items.count})" %>
-              <% else %>
-                <i class="fa-solid fa-cart-shopping"></i> カート(0)
-              <% end %>
-            <% end %>
+          <li id="header_cart">
+            <%= render 'layouts/header_cart' %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
