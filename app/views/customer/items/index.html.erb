@@ -1,0 +1,36 @@
+<div class="container w-25% mt-5">
+  <div class="row">
+
+    <div class="col-md-3">
+     <%= render 'genre-search', genres: @genres %>
+    </div>
+
+    <div class="col-md-8 offset-md-1 mx-auto">
+     <h4 class="my-4">
+      <% if params[:id] %>
+       <%= @genre.name %><span class="small text-muted"> 全 <%= @items.count %> 件</span>
+      <% else %>
+       商品一覧<span class="small text-muted"> 全 <%= @items.count %> 件</span>
+      <% end %>
+     </h4>
+
+     <div class="d-flex align-items-center justify-content-around flex-wrap mb-5">
+
+      <% @items.each do |item| %>
+       <div class="my-5 mx-1 text-right" style: 'width: 23%'>
+         <%= link_to item_path(item), class: 'text-decoration-none' do %>
+          <%= image_tag item.get_image(150,150) %>
+          <p class="mt-2 text-center">
+           <span style="color: #816F5B;"><%= item.name %></span><br />
+            <span style="color: #2b2b2b;"> ¥<%= (item.price * 1.10).round.to_s(:delimited) %></span>
+           </p>
+         <% end %>
+         <!--<p class="text-center"></p>-->
+       </div>
+      <% end %>
+     </div>
+
+     <%= paginate @items %>
+    </div>
+  </div>
+</div>

@@ -6,11 +6,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body style="background-color:#FFF5EE">
+    <div style="position: relative; padding-bottom: 75px; min-height: 100vh; box-sizing: border-box;">
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <div class="notice text-success text-center mt-3" id="notice"><%= flash[:notice] %></div>
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="mt-5">
+      <%= render 'layouts/footer' %>
+    </footer>
+    </div>
   </body>
 </html>

@@ -1,0 +1,25 @@
+  ja:
+    activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗: %{errors}"
+        blank: "を入力してください"
+        invalid: "は不正な値です"
+        required: "を入力してください"
+    enums:
+      order:
+        payment_method:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+        status:
+          payment_waiting: "入金待ち"
+          payment_confirmation: "入金確認"
+          production: "製作中"
+          preparing_delivery: "発送準備中"
+          delivered: "発送済み"
+      order_detail:
+        making_status:
+          start_impossible: "着手不可"
+          production_waiting: "製作待ち"
+          production: "製作中"
+          production_complete: "製作完了"

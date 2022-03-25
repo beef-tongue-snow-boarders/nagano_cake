@@ -1,0 +1,53 @@
+<% if current_customer.cart_items.present? %>
+ <h2>ショッピングカート</h2>
+ <p class="text-right"><%= link_to "カートを空にする", cart_items_all_destroy_path,method: :delete,remote: true, "data-confirm" => "全て削除しますか？" %></p>
+ <table class="table table-borderless border-top border-bottom">
+   <thead align="center">
+     <tr>
+         <th></th>
+         <th>商品名</th>
+         <th>単価</th>
+         <th class="text-center">数量</th>
+         <th>小計</th>
+         <th></th>
+     </tr>
+   </thead>
+   <% total = 0 %>
+   <tbody align="center">
+    <% cart_items.each do |cart_item| %>
+     <tr>
+         <td><%= image_tag cart_item.item.get_image(60,60) %></td>
+         <td><%= cart_item.item.name %></td>
+         <td>¥<%= (cart_item.item.add_tax_price).to_i.to_s(:delimited) %></td>
+         <td>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item),method: :patch, local: false do |f| %>
+           <div class="d-flex justify-content-center">
+             <%= f.number_field :amount, min: 1, max: 9,class: 'form-control form-control-sm mr-2',style: 'width: 50px', id: "amount_cart" %>
+             <%= f.submit "変更", class: 'btn btn-sm',style: "background-color: #816F5B; color: #fff;" %>
+           </div>
+          <% end %>
+         </td>
+         <td>
+             <% subtotal = ((cart_item.item.price*cart_item.amount)*1.10).to_i %>
+             ¥<%= subtotal.round.to_s(:delimited) %>
+         </td>
+         <td>
+             <%= link_to "削除",cart_item_path(cart_item.id,cart_item), method: :delete,remote: true, "data-confirm" => "削除しますか？" %>
+         </td>
+     </tr>
+     <% total += subtotal %>
+    <% end %>
+   </tbody>
+ </table>
+ <h4 class="text-right mr-2 mt-5">合計　¥<%= total.round.to_s(:delimited) %></h4>
+
+ <div class="mt-5 text-center">
+     <span><%= link_to "買い物を続ける",root_path, class: 'btn btn-outline-secondary mr-2' %></span>
+     <span><%=link_to "情報入力画面へ進む", new_order_path, class: 'btn ml-2',style: "background-color: #816F5B; color: #fff;" %></span>
+ </div>
+<% else %>
+ <div class="text-center">
+  <p class="mb-5">カート内に商品はありません</p>
+  <%= link_to "買い物を続ける",root_path, class: 'btn btn-outline-secondary' %>
+ </div>
+<% end %>

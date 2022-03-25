@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <h1 class="display-3 font-weight-bold mx-auto my-3">About</h1>
+  </div>
+  <div class="row">
+    <p class="text-center h6 mx-auto" style="line-height:2rem">
+      ながのcakeは全国発送可能なケーキ屋さんです。<br>
+      お子様からお年寄りの方までお召し上がりいただけるよう、<br>
+      様々なバリエーションをご用意しております。<br>
+      また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
+      ぜひご注文ください。
+    </p>
+  </div>
+    <div id="carouselExampleIndicators" class="carousel slide col-md-8 mx-auto" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner text-center">
+        <div class="carousel-item active">
+          <%= image_tag 'deserts.jpg',size: '600x370' %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'ichigo.jpg',size: '600x370' %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'dsc.jpg',size: '600x370' %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'bake.jpg',size: '600x370' %>
+        </div>
+      </div>
+      <a class="carousel-control-prev ml-4" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next mr-4" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>

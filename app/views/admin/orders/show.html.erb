@@ -1,0 +1,57 @@
+<div class="container">
+  <h2 class="mt-5 mb-5 ml-5">注文履歴詳細</h2>
+  <div class="row">
+    <table class="table table-borderless">
+      <tr width="100%">
+        <td width="15%"><strong>購入者</strong></td>
+        <td width="85%"><%= link_to @order.customer.name_display, admin_path(customer_id: @order.customer_id) %></td>
+      </tr>
+      <tr>
+        <td><strong>注文日</strong></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <td><strong>配送先</strong></td>
+        <td>
+          <%= @order.postal_code + " " + @order.address %><br>
+          <%= @order.name %>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>支払方法</strong></td>
+        <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
+      </tr>
+      <tr>
+        <td><strong>注文ステータス</strong></td>
+        <td>
+          <div id="order_status" class="text-danger">
+            <%= render "admin/orders/order_status", order: @order %>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div id="order_detail">
+        <%= render "admin/orders/order_detail", order: @order %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <table class="table table-borderless">
+        <tr width="100%">
+          <td width="50%"><strong>商品合計</strong></td>
+          <td width="50%">￥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td><strong>送料</strong></td>
+          <td>￥<%= @order.shipping_cost.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td><strong>請求金額合計</strong></td>
+          <td><strong>￥<%= @order.total_payment.to_s(:delimited) %></strong></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container-xxl mt-5 mx-5">
+ <h2 class="ml-5"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
+  <div class="customer-information mt-5">
+    <table class="col-8 table table-bordered mt-3 mb-5">
+      <tr>
+        <td class="col-3">会員ID</td>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td class="col-3">氏名</td>
+        <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td class="col-3">フリガナ</td>
+        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+      </tr>
+      <tr>
+        <td class="col-3">郵便番号</td>
+        <td><%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <td class="col-3">住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td class="col-3 ">電話番号</td>
+        <td><%= @customer.phone_number %></td>
+      </tr>
+      <tr>
+        <td class="col-3">メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <td class="col-3">会員ステータス</td>
+        <% if @customer.is_deleted == true %>
+          <td class="text-secondary font-weight-bold">退会</td>
+        <% else %>
+          <td class="text-success font-weight-bold">有効</td>
+        <% end %>
+      </tr>
+    </table>
+
+    <div class="px-5 mx-5">
+      <%= link_to "編集する", edit_admin_customer_path, class: "btn mr-5",style: "background-color: #816F5B; color: #fff;" %>
+      <%= link_to "注文履歴一覧を見る", admin_path(customer_id: @customer.id), class: "btn btn-secondary ml-5" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="container col-5 mx-auto mt-5">
+  <h2 class="mb-5">新規会員登録</h2>
+  <div class="row">
+    <div>
+     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "customer/shared/error_messages", resource: resource %>
+      <table>
+          <tr>
+            <td>名前</td>
+            <td class="mr-3"><%= f.label :'(姓)'%></td>
+            <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",placeholder: "令和", class: 'form-control' %></td>
+            <td class="pl-3"><%= f.label :'(名)' %></td>
+            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",placeholder: "道子", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td align="right" class="pt-3"><%= f.label :'(セイ)' %></td>
+            <td class="pt-3"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",placeholder: "レイワ", class: 'form-control' %></td>
+            <td class="pl-3 pt-3"><%= f.label :'(メイ)' %></td>
+            <td class="pt-3"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",placeholder: "ミチコ", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-3"><%= f.label :メールアドレス %></td>
+            <td class="pt-3"><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sample@example.com", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-4"><%= f.label :'郵便番号(ハイフンなし)' %></td>
+            <td class="pt-3"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",placeholder: "0000000", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-3"><%= f.label :住所 %></td>
+            <td colspan="3" class="pt-3"><%= f.text_field :address, autofocus: true, autocomplete: "address",placeholder: "東京都渋谷区代々木神園町0-0", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-3"><%= f.label :'電話番号(ハイフンなし)'%></td>
+            <td class="pt-3"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",placeholder: "0000000000", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-3">
+              <%= f.label :パスワード %>
+              <% if @minimum_password_length %>
+              (<%= @minimum_password_length %>文字以上)
+              <% end %>
+            </td>
+            <td class="pt-3" class="pt-3"><%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td class="pt-3"><%= f.label :'パスワード(確認用)' %></td>
+            <td>&nbsp;</td>
+
+            <td class="pt-3"><%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td align="center" colspan="5" class="pt-4"><%= f.submit "新規登録", class: 'btn w-25',style: "background-color: #816F5B; color: #fff;" %></td>
+          </tr>
+        </table>
+      <% end %>
+      <h2 class="mt-5">既に登録済みの方</h2>
+      <p class="mt-5 text-center"><%= render "customer/shared/links" %></p>
+    </div>
+  </div>
+</div>

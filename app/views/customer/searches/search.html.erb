@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div class="row">
+    <h2>"<%= @q %>"　検索結果</h2>
+  </div>
+    <% if @results.exists? %>
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-center justify-content-around flex-wrap mb-5">
+            <% @results.each do |item| %>
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_image(300,300), class: "text-decoration-none" %>
+                <p class="mt-2 text-center" style="color: #C5956B;"><%= item.name %></p>
+                <p class="text-center">￥<%= item.price.to_s(:delimited) %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="row h4">一致する検索結果がありません</div>
+    <% end %>
+</div>

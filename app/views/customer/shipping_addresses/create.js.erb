@@ -1,0 +1,4 @@
+$(".address-index").html("<%= j(render 'index', shipping_addresses: @shipping_addresses) %>");
+$('input[type=text]').val("");
+$("#notice").html("<%= flash[:notice] %>");
+$("#error").html("<%= j(render 'layouts/errors', obj: @shipping_address) %>");

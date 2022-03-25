@@ -1,0 +1,46 @@
+<div class="container mx-auto mt-5">
+  <div class="row">
+    <h2>"<%= @q %>" 検索結果</h2>
+  </div>
+    <% if @results.exists? %>
+      <div class='row'>
+        <div class="col-12 px-5 px-sm-0">
+          <table class="table table-borderless table-hover">
+            <thead class="text-light" bgcolor="#816F5B">
+              <tr>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>税抜価格</th>
+                <th>ジャンル</th>
+                <th></th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @results.each do |item| %>
+                <tr>
+                  <td><%= item.id %></td>
+                  <td>
+                    <%= link_to admin_item_path(item), class: 'btn btn-default' do %>
+                      <%= item.name %>
+                    <% end %>
+                  </td>
+                  <td>￥<%= item.price.to_s(:delimited) %></td>
+                  <td><%= item.genre.name %></td>
+                  <td></td>
+                  <% if item.is_active == true %>
+                    <td class="text-success font-weight-bold">販売中</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">販売停止中</td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <div class="row h4">一致する検索結果がありません</div>
+      <% end %>
+  </div>
+</div>
+

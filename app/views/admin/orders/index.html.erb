@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="mt-5 ml-5"><%= @heading %></h2>
+  <% if  @customer_id == nil %>
+    <p class="alert alert-secondary"><%= @count_status %></p>
+  <% end %>
+  <table class="table table-bordered">
+    <tr width="100%" bgcolor="#816F5B" class="text-light">
+      <th width="30%">購入日時</th>
+      <% if @customer_id == nil %>
+        <th width="20%">購入者</th>
+      <% end %>
+      <th width="20%">注文個数</th>
+      <th width="30%">注文ステータス
+        <%= form_with url: admin_path, method: :get, local: true do |f| %>
+          <div class="form-inline">
+            <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]}, {}, class: 'form-control' %>
+            <% if @customer_id != nil %>
+              <%= f.hidden_field :customer_id, value: @customer_id %>
+            <% end %>
+            <%= f.button :type => "submit", style: 'border-style: none; background-color: #816F5B; color: #fff;' do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </th>
+    </tr>
+    <%  @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
+        <% if @customer_id == nil %>
+          <td><%= order.customer.name_display %></td>
+        <% end %>
+        <td><%= order.total_amount.to_s(:delimited) %></td>
+        <td><%= Order.statuses_i18n[order.status] %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @orders %>
+</div>

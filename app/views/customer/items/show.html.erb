@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="row">
+
+    <div class="col-md-3">
+      <%= render 'genre-search', genres: @genres %>
+    </div>
+
+    <div class="col-md-9">
+     <div class="mt-4 text-center">
+      <%= image_tag @item.get_image(400,400) %>
+     </div>
+     <div class="ml-5 mt-5 text-center">
+       <% if @item.is_active == TRUE %>
+         <h4><%= @item.name %></h4><br />
+         <h5 class="text-break"><%= @item.introduction %></h5>
+         <h4>¥ <%= @item.add_tax_price.to_s(:delimited) %><span class="text-muted small mt-1"> (税込)</span></h4>
+         <div class="mt-5">
+           <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
+            <div class="d-flex justify-content-center">
+              <%= f.select :amount, *[1..9],{},class: 'form-control form-control-sm mx-2', style: 'width: 55px' %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.submit "カートに入れる", class: 'btn btn-sm ml-3 ',style: "background-color: #816F5B; color: #fff;" %>
+            </div>
+            <% end %>
+         </div>
+       <% else %>
+       　<h4><%= @item.name %></h4><br />
+         <h5><%= @item.introduction %></h5>
+         <h4>¥ <%= @item.add_tax_price.to_s(:delimited) %><span class="text-muted small mt-1"> (税込)</span></h4>
+         <span class="text-danger">販売停止中</span>
+       <% end %>
+     </div>
+    </div>
+  </div>
+</div>

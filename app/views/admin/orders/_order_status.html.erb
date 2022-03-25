@@ -1,0 +1,6 @@
+<%= Order.statuses_i18n[order.status] %>
+<%= form_with model: order, url: admin_order_path, method: :patch, local: false do |f| %>
+  <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+  <%= f.hidden_field :id, value: order.id %>
+  <%= f.submit "更新", class: "btn btn-sm",style: "background-color: #816F5B; color: #fff;" %>
+<% end %>

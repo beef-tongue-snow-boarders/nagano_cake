@@ -1,0 +1,61 @@
+<div class="container">
+  <h2 class="mt-5 mb-5 ml-5">注文情報入力</h2>
+  <%= render "layouts/errors", obj: @order %>
+  <p><strong>支払い方法</strong></p>
+  <%= form_with model: @order, url: orders_order_confirm_path, method: :post, local: true do |f| %>
+    <div class="ml-3">
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0), {:checked => true} %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
+    </div>
+    <div class="ml-3 mb-3">
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+    </div>
+    <p><strong>お届け先</strong></p>
+    <div class="ml-3 mb-3">
+      <%= f.radio_button :address_number,"1" %>
+      <%= f.label :address_number_1, "ご自身の住所" %><br>
+      <div class="ml-3">
+        <%= current_customer.address_display %><br>
+        <%= current_customer.name_display %><br>
+      </div>
+    </div>
+    <% if current_customer.shipping_addresses.exists? %>
+      <div class="ml-3 mb-3">
+        <%= f.radio_button :address_number, "2" %>
+        <%= f.label :address_number_2, "登録住所から選択" %><br>
+        <div class="ml-3">
+          <%= f.select :shipping_address_id, options_from_collection_for_select(current_customer.shipping_addresses.all, :id, :shipping_address_display), {}, class: 'form-control'  %><br>
+        </div>
+      </div>
+    <% end %>
+    <div class="ml-3 mb-3">
+      <%= f.radio_button :address_number, "3" %>
+      <%= f.label :address_number_3, "新しいお届け先" %><br>
+      <div class="ml-3">
+        <table width="100%">
+          <tr>
+            <td width="20%"><%= f.label "郵便番号(ハイフンなし)" %></td>
+            <td width="40%"><%= f.text_field :postal_code , placeholder: "0000000", class: 'form-control' %></td>
+            <td width="40%"></td>
+          </tr>
+          <tr>
+            <td><%= f.label "住所" %></td>
+            <td colspan="2"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "宛先" %></td>
+            <td><%= f.text_field :name, placeholder: "令和道子", class: 'form-control' %></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center ">
+      <%= f.submit "確認画面に進む", class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
+
+
+
